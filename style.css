@@ -1,0 +1,126 @@
+:root {
+  /* color palette */
+  --Orange: hsl(25, 97%, 53%);
+
+  --White: hsl(0, 0%, 100%);
+  --Light-Grey: hsl(217, 12%, 63%);
+  --Dark-Blue: hsl(213, 19%, 18%);
+  --Very-Dark-Blue: hsl(216, 12%, 8%);
+
+  /* spacing */
+  --default-margin: 18px;
+  --default-radius: 15px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 15px;
+  font-family: "Overpass", sans-serif;
+  overflow: hidden;
+  /* Weights: 400, 700 */
+}
+
+body {
+  background-color: var(--Very-Dark-Blue);
+  color: aliceblue;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+#rateCard {
+  width: 30%;
+  min-width: 320px;
+  max-width: 400px;
+  padding: 35px;
+  border-radius: var(--default-radius);
+  background: radial-gradient(
+    ellipse at left top,
+    rgb(58, 77, 100) 0%,
+    rgba(37, 45, 55, 1) 100%
+  );
+}
+
+#rateCard h2,
+#rateCard .message,
+.numbers {
+  margin-bottom: 20px;
+}
+
+.message {
+  color: var(--Light-Grey);
+}
+
+.rateCard-Pic {
+  background-color: var(--Dark-Blue);
+  padding: 15px;
+  border-radius: 32px;
+  margin-bottom: 20px;
+}
+
+.numbers {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.num-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  aspect-ratio: 1/1;
+  background-color: var(--Dark-Blue);
+  border: none;
+  border-radius: 32px;
+  color: var(--White);
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 15px;
+  border-radius: 50px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 600;
+  background-color: var(--Orange);
+  border: none;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background-color: var(--White);
+}
+
+.num-btn {
+  cursor: pointer;
+}
+
+.num-btn:hover {
+  background-color: var(--Orange);
+}
+
+.num-btn:active {
+  background-color: var(--White);
+}
+
+#thank-u {
+  display: none;
+}
+
+@media only screen and (max-width: 375px) {
+  #rateCard {
+    padding: 20px;
+  }
+}
