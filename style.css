@@ -85,6 +85,7 @@ main {
   border: none;
   border-radius: 32px;
   color: var(--White);
+  font-weight: 700;
 }
 
 .submit-btn {
@@ -109,6 +110,7 @@ main {
 
 .num-btn:hover {
   background-color: var(--Orange);
+  color: var(--Very-Dark-Blue);
 }
 
 .num-btn:active {
