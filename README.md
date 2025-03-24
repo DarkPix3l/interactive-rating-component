@@ -87,9 +87,15 @@ So now, after submitting, the button inside thanksSection updates with: "You sel
 - When the submit button is clicked:
    - It checks if a rating was selected.
 
-   - If selected, it: - Fades out ratingSection (opacity: 0 → visibility: hidden). - Shows thanksSection (opacity: 1 → visibility: visible). - Updates the text to say "You selected X out of 5". - Reloads the page after 5 seconds.
+   - If selected, it: 
+        - Fades out ratingSection (opacity: 0 → visibility: hidden). 
+        - Shows thanksSection (opacity: 1 → visibility: visible). 
+        - Updates the text to say "You selected X out of 5". 
+        - Reloads the page after 5 seconds.
 
-   - If not selected, it: - Shows an alert message. - Adds a red border to the rating card as a warning.
+   - If not selected, it: 
+        - Shows an alert message. 
+        - Adds a red border to the rating card as a warning.
 
 
 
