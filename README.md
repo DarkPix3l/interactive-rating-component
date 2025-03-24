@@ -1,94 +1,152 @@
-# Frontend Mentor - Interactive rating component
+# Frontend Mentor - Interactive rating component solution
+![Design preview for the Interactive rating component coding challenge](./design/InteractiveRatingComponents.gif)
 
-![Design preview for the Interactive rating component coding challenge](./design/desktop-preview.jpg)
+This is a solution to the [Interactive rating component challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/interactive-rating-component-koxpeBUmI). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-## Welcome! 👋
+## Table of contents
 
-Thanks for checking out this front-end coding challenge.
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [Latest Changes & What I Fixed](#Latest-Changes-&-What-I-Fixed)
+  - [Last-Minute Change](#uLast-Minute-Change)
+  - [Useful resources](#useful-resources)
+- [Author](#author)
 
-[Frontend Mentor](https://www.frontendmentor.io) challenges help you improve your coding skills by building realistic projects.
+---
 
-**To do this challenge, you need a basic understanding of HTML, CSS and JavaScript.**
+## Overview
 
-## The challenge
+### The challenge
 
-Your challenge is to build out this interactive rating component and get it looking as close to the design as possible.
-
-You can use any tools you like to help you complete the challenge. So if you've got something you'd like to practice, feel free to give it a go.
-
-Your users should be able to:
+Users should be able to:
 
 - View the optimal layout for the app depending on their device's screen size
 - See hover states for all interactive elements on the page
 - Select and submit a number rating
 - See the "Thank you" card state after submitting a rating
 
-Want some support on the challenge? [Join our community](https://www.frontendmentor.io/community) and ask questions in the **#help** channel.
+### Links
 
-## Where to find everything
+- Solution URL: [Add solution URL here](https://github.com/DarkPix3l/interactive-rating-component)
+- Live Site URL: [Add live site URL here](https://fm-interactiveratingcomponent.netlify.app/)
 
-Your task is to build out the project to the designs inside the `/design` folder. You will find both a mobile and a desktop version of the design. 
+## My process
 
-The designs are in JPG static format. Using JPGs will mean that you'll need to use your best judgment for styles such as `font-size`, `padding` and `margin`. 
+### Built with
 
-If you would like the design files (we provide Sketch & Figma versions) to inspect the design in more detail, you can [subscribe as a PRO member](https://www.frontendmentor.io/pro).
+- Semantic HTML5 markup
+- CSS custom properties
+- Flexbox
+- Javascript
 
-You will find all the required assets in the `/images` folder. The assets are already optimized.
+### Latest Changes & What I Fixed
 
-There is also a `style-guide.md` file containing the information you'll need, such as color palette and fonts.
+So, I made a few improvements to the rating system to make everything smoother and more user-friendly. Here’s what I changed and why:
 
-## Building your project
+**1. Better Transitions Between Sections**
 
-Feel free to use any workflow that you feel comfortable with. Below is a suggested process, but do not feel like you need to follow these steps:
+- Before, when submitting a rating, the ratingSection just disappeared, and the thanksSection immediately popped up which felt abrupt.
+  I thought about improving this fade-in and out but also to find the way to delay the fade-in of the second section.
 
-1. Initialize your project as a public repository on [GitHub](https://github.com/). Creating a repo will make it easier to share your code with the community if you need help. If you're not sure how to do this, [have a read-through of this Try Git resource](https://try.github.io/).
-2. Configure your repository to publish your code to a web address. This will also be useful if you need some help during a challenge as you can share the URL for your project with your repo URL. There are a number of ways to do this, and we provide some recommendations below.
-3. Look through the designs to start planning out how you'll tackle the project. This step is crucial to help you think ahead for CSS classes to create reusable styles.
-4. Before adding any styles, structure your content with HTML. Writing your HTML first can help focus your attention on creating well-structured content.
-5. Write out the base styles for your project, including general content styles, such as `font-family` and `font-size`.
-6. Start adding styles to the top of the page and work down. Only move on to the next section once you're happy you've completed the area you're working on.
+```js
 
-## Deploying your project
+rating.addEventListener("transitionend", function () {});
 
-As mentioned above, there are many ways to host your project for free. Our recommended hosts are:
+```
 
-- [GitHub Pages](https://pages.github.com/)
-- [Vercel](https://vercel.com/)
-- [Netlify](https://www.netlify.com/)
+- I made it fade out smoothly using opacity: 0 before actually hiding it with visibility: hidden. Then, once the fade-out was done, the thanksSection fades in (opacity: 1).
+  Why? Visibility (hidden/visible) doesn’t animate in CSS, so I had to rely on opacity for a smooth transition.
 
-You can host your site using one of these solutions or any of our other trusted providers. [Read more about our recommended and trusted hosts](https://medium.com/frontend-mentor/frontend-mentor-trusted-hosting-providers-bf000dfebe).
+**2. Page-Reload After Successful submission**
 
-## Create a custom `README.md`
+After successful submission, I added a 5-second delay before the page refreshes, so users have time to see the “Thank You” message.
 
-We strongly recommend overwriting this `README.md` with a custom one. We've provided a template inside the [`README-template.md`](./README-template.md) file in this starter code.
+**3.Rating System**
 
-The template provides a guide for what to add. A custom `README` will help you explain your project and reflect on your learnings. Please feel free to edit our template as much as you like.
+I added data-value attributes to each button so that when a user clicks on one, JavaScript grabs that value and injects it dynamically into the HTML.
+So now, after submitting, the button inside thanksSection updates with: "You selected X out of 5", making it clear what the user chose.
 
-Once you've added your information to the template, delete this file and rename the `README-template.md` file to `README.md`. That will make it show up as your repository's README file.
+🌕 **Selecting a Number Rating**
 
-## Submitting your solution
+- Each button (.num-btn) has a data-value attribute (1-5).
 
-Submit your solution on the platform for the rest of the community to see. Follow our ["Complete guide to submitting solutions"](https://medium.com/frontend-mentor/a-complete-guide-to-submitting-solutions-on-frontend-mentor-ac6384162248) for tips on how to do this.
+- When a button is clicked, it:
+  ○ Removes the "active" class from all buttons.
+  ○ Adds "active" to the clicked button so it stands out.
+  ○ Saves the selected value (selectedValue = element.getAttribute("data-value")).
 
-Remember, if you're looking for feedback on your solution, be sure to ask questions when submitting it. The more specific and detailed you are with your questions, the higher the chance you'll get valuable feedback from the community.
+🌕 **Submitting the Rating**
 
-## Sharing your solution
+- When the submit button is clicked:
+  ○ It checks if a rating was selected.
 
-There are multiple places you can share your solution:
+  ○ If selected, it: - Fades out ratingSection (opacity: 0 → visibility: hidden). - Shows thanksSection (opacity: 1 → visibility: visible). - Updates the text to say "You selected X out of 5". - Reloads the page after 5 seconds.
 
-1. Share your solution page in the **#finished-projects** channel of the [community](https://www.frontendmentor.io/community). 
-2. Tweet [@frontendmentor](https://twitter.com/frontendmentor) and mention **@frontendmentor**, including the repo and live URLs in the tweet. We'd love to take a look at what you've built and help share it around.
-3. Share your solution on other social channels like LinkedIn.
-4. Blog about your experience building your project. Writing about your workflow, technical choices, and talking through your code is a brilliant way to reinforce what you've learned. Great platforms to write on are [dev.to](https://dev.to/), [Hashnode](https://hashnode.com/), and [CodeNewbie](https://community.codenewbie.org/).
+  ○ If not selected, it: - Shows an alert message. - Adds a red border to the rating card as a warning.
 
-We provide templates to help you share your solution once you've submitted it on the platform. Please do edit them and include specific questions when you're looking for feedback. 
+**4.Created the Alert Message**
 
-The more specific you are with your questions the more likely it is that another member of the community will give you feedback.
+- Before, if someone clicked submit without picking a rating, nothing happened except a console error.
+- Now, when that happens, an alert message appears, and I also add a red border around the rating card to make it obvious something is wrong.
+- I kept the alert element in the DOM (instead of display: none), so it doesn’t mess up the layout when it appears.
 
-## Got feedback for us?
+### Last-Minute Change
 
-We love receiving feedback! We're always looking to improve our challenges and our platform. So if you have anything you'd like to mention, please email hi[at]frontendmentor[dot]io.
+**Shake Effect on Error**
 
-This challenge is completely free. Please share it with anyone who will find it useful for practice.
+I added a small but cool shake animation when the user tries to submit without selecting a rating. Here's what I did:
 
-**Have fun building!** 🚀
+- Created a CSS animation (with keyframes) called shake, which moves the rating card slightly left and right.
+
+- Triggered the animation in JavaScript when an error occurs (no rating selected).
+
+- Automatically removed the animation after it plays, so it resets properly for the next attempt.
+
+```css
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+}
+
+.cardShake {
+  animation: shake 0.3s ease-in-out;
+}
+
+```
+
+```js
+
+cardAlert.classList.add("cardShake");
+setTimeout(() => {
+  cardAlert.classList.remove("cardShake");
+}, 300);
+
+```
+
+---
+
+### Useful resources
+
+- [transitionend Event](https://www.w3schools.com/jsref/event_transitionend.asp) - this helped me with checking when the transition of an element was done.
+- [NodeLists vs. Arrays](https://gomakethings.com/nodelists-vs-arrays/) - well... always useful.
+
+## Author
+
+- Website - [GM](gretamacri.com)
+- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
+

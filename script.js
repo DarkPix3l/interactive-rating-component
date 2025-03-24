@@ -49,10 +49,11 @@ function submit() {
 
     alertMsg.classList.add("alert-show");
     cardAlert.style.border = "1px solid var(--alert)";
+    
     //adding the shaking animation and stop it after
-    cardAlert.classList.add("alert-show");
+    cardAlert.classList.add("cardShake");
     setTimeout(() => {
-      cardAlert.classList.remove("alert-show");
+      cardAlert.classList.remove("cardShake");
     }, 300);
   }
 }
