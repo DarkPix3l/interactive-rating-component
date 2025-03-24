@@ -20,31 +20,39 @@ numberBtn.forEach((element) => {
 });
 
 function submit() {
-
   if (selectedValue) {
     rating.style.opacity = "0";
     ratingBTN.innerHTML = `You selected ${selectedValue} out of 5`;
 
-    rating.addEventListener( "transitionend", function () { //Start after rating opacity animation has finished
+    rating.addEventListener(
+      "transitionend",
+      function () {
+        //Start after rating opacity animation has finished
         rating.style.visibility = "hidden";
         thanks.style.opacity = "1";
         thanks.style.visibility = "visible";
       },
-      /* { once: true } */
+      { once: true }
     );
 
     alertMsg.classList.remove("alert-show");
     cardAlert.style.border = "none";
+
     console.log(`Selected rate: ${selectedValue}`);
 
-    setTimeout(function () { //reload the page after the rating was successful
+    setTimeout(function () {
+      //reload the page after the rating was successful
       window.location.reload();
-    }, 5000); 
-
-
+    }, 5000);
   } else {
     console.error("Please select a value first.");
+
     alertMsg.classList.add("alert-show");
     cardAlert.style.border = "1px solid var(--alert)";
+    //adding the shaking animation and stop it after
+    cardAlert.classList.add("alert-show");
+    setTimeout(() => {
+      cardAlert.classList.remove("alert-show");
+    }, 300);
   }
 }
