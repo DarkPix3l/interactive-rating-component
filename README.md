@@ -29,9 +29,7 @@ Users should be able to:
 - See the "Thank you" card state after submitting a rating
 
 ### Links
-
-- Solution URL: [Add solution URL here](https://github.com/DarkPix3l/interactive-rating-component)
-- Live Site URL: [Add live site URL here](https://fm-interactiveratingcomponent.netlify.app/)
+- Live Site URL: [Netlify](https://fm-interactiveratingcomponent.netlify.app/)
 
 ## My process
 
