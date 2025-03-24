@@ -60,9 +60,13 @@ rating.addEventListener("transitionend", function () {});
 - I made it fade out smoothly using opacity: 0 before actually hiding it with visibility: hidden. Then, once the fade-out was done, the thanksSection fades in (opacity: 1).
   Why? Visibility (hidden/visible) doesn’t animate in CSS, so I had to rely on opacity for a smooth transition.
 
+
+
 **2. Page-Reload After Successful submission**
 
 After successful submission, I added a 5-second delay before the page refreshes, so users have time to see the “Thank You” message.
+
+
 
 **3.Rating System**
 
@@ -74,24 +78,27 @@ So now, after submitting, the button inside thanksSection updates with: "You sel
 - Each button (.num-btn) has a data-value attribute (1-5).
 
 - When a button is clicked, it:
-  ○ Removes the "active" class from all buttons.
-  ○ Adds "active" to the clicked button so it stands out.
-  ○ Saves the selected value (selectedValue = element.getAttribute("data-value")).
+   - Removes the "active" class from all buttons.
+   - Adds "active" to the clicked button so it stands out.
+   - Saves the selected value (selectedValue = element.getAttribute("data-value")).
 
 🌕 **Submitting the Rating**
 
 - When the submit button is clicked:
-  ○ It checks if a rating was selected.
+   - It checks if a rating was selected.
 
-  ○ If selected, it: - Fades out ratingSection (opacity: 0 → visibility: hidden). - Shows thanksSection (opacity: 1 → visibility: visible). - Updates the text to say "You selected X out of 5". - Reloads the page after 5 seconds.
+   - If selected, it: - Fades out ratingSection (opacity: 0 → visibility: hidden). - Shows thanksSection (opacity: 1 → visibility: visible). - Updates the text to say "You selected X out of 5". - Reloads the page after 5 seconds.
 
-  ○ If not selected, it: - Shows an alert message. - Adds a red border to the rating card as a warning.
+   - If not selected, it: - Shows an alert message. - Adds a red border to the rating card as a warning.
+
+
 
 **4.Created the Alert Message**
 
 - Before, if someone clicked submit without picking a rating, nothing happened except a console error.
 - Now, when that happens, an alert message appears, and I also add a red border around the rating card to make it obvious something is wrong.
 - I kept the alert element in the DOM (instead of display: none), so it doesn’t mess up the layout when it appears.
+
 
 ### Last-Minute Change
 
@@ -148,5 +155,5 @@ setTimeout(() => {
 ## Author
 
 - Website - [GM](gretamacri.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
+- Frontend Mentor - [@DarkPix3l](https://www.frontendmentor.io/profile/DarkPix3l)
 
