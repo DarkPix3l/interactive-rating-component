@@ -7,96 +7,149 @@
   --Dark-Blue: hsl(213, 19%, 18%);
   --Very-Dark-Blue: hsl(216, 12%, 8%);
 
+  --alert: rgb(238 64 76);
+
   /* spacing */
   --default-margin: 18px;
   --default-radius: 15px;
 }
 
-* {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
 html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
   font-size: 15px;
   font-family: "Overpass", sans-serif;
   overflow: hidden;
   /* Weights: 400, 700 */
+  height: 100vh;
 }
 
 body {
   background-color: var(--Very-Dark-Blue);
-  color: aliceblue;
+  color: var(--White);
 }
 
 main {
+  height: 100vh;
+  width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+}
+
+button {
+  border: none;
+  border-radius: 50px;
+}
+
+img {
+  margin-bottom: 20px;
+}
+
+p {
+  font-weight: 400;
+  color: var(--Light-Grey);
 }
 
 #rateCard {
-  width: 30%;
-  min-width: 320px;
-  max-width: 400px;
+  position: relative;
+  width: clamp(278px, 85vw, 400px);
+  margin: 0 auto;
   padding: 35px;
+  line-height: 25px;
   border-radius: var(--default-radius);
   background: radial-gradient(
     ellipse at left top,
     rgb(58, 77, 100) 0%,
     rgba(37, 45, 55, 1) 100%
   );
+  transition: border 0.4s ease;
+  border: none;
 }
 
-#rateCard h2,
-#rateCard .message,
-.numbers {
-  margin-bottom: 20px;
+#ratingSection,
+#thanksSection {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
 }
 
-.message {
-  color: var(--Light-Grey);
+#ratingSection {
+  transition: all 0.4s ease;
+  visibility: visible;
+  opacity: 1;
+}
+
+#thanksSection {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: space-around;
+  padding: 30px;
+  text-align: center;
+  transition: all 0.4s ease;
+  visibility: hidden;
+  opacity: 0;
+}
+
+#thanksSection button {
+  padding: 10px 22px;
+  width: fit-content;
+  background-color: var(--Dark-Blue);
+  color: var(--Orange);
+  text-wrap: nowrap;
+  letter-spacing: 1px;
+}
+
+#thanksSection h2 {
+  font-size: 2rem;
+  margin-bottom: 17px;
+  font-weight: 600;
 }
 
 .rateCard-Pic {
   background-color: var(--Dark-Blue);
   padding: 15px;
   border-radius: 32px;
-  margin-bottom: 20px;
 }
 
 .numbers {
+  width: 100%;
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
 }
 
 .num-btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 50px;
   height: 50px;
   aspect-ratio: 1/1;
   background-color: var(--Dark-Blue);
-  border: none;
-  border-radius: 32px;
   color: var(--White);
   font-weight: 700;
+  cursor: pointer;
 }
 
 .submit-btn {
   width: 100%;
   padding: 15px;
-  border-radius: 50px;
   letter-spacing: 2px;
   text-transform: uppercase;
   font-weight: 600;
   background-color: var(--Orange);
-  border: none;
   cursor: pointer;
 }
 
@@ -104,25 +157,70 @@ main {
   background-color: var(--White);
 }
 
-.num-btn {
-  cursor: pointer;
-}
-
 .num-btn:hover {
   background-color: var(--Orange);
   color: var(--Very-Dark-Blue);
 }
 
-.num-btn:active {
+.active {
   background-color: var(--White);
+  color: var(--Very-Dark-Blue);
 }
 
-#thank-u {
-  display: none;
+.alert {
+  font-size: 1.5rem;
+  color: var(--alert);
+  list-style: none;
+  opacity: 0;
+  transform: scaleY(0);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.alert-show {
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+.alert li::before {
+  content: "";
+  background-image: url(./images/alertIcon.png);
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  transform: translateY(30%);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  padding: 35px;
+}
+
+.attribution {
+  font-size: 12px;
+  color: var(--Very-Light-Gray);
+}
+
+.attribution a {
+  color: hsl(350, 100%, 61%);
+  letter-spacing: 0.5px;
 }
 
 @media only screen and (max-width: 375px) {
   #rateCard {
     padding: 20px;
+  }
+  .num-btn {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  #thanksSection {
+    gap: 37px;
   }
 }

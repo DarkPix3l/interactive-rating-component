@@ -1,23 +1,10 @@
-  <!-- Rating state start -->
+ rating.style.opacity = "0"
+          //rating.style.visibility = 'hidden';
+          /*        Potential Bug:  adding an event listener to rating after setting visibility: hidden, but since visibility is not an animatable property, the transitionend event may not fire consistently. */
 
-  How did we do?
 
-  Please let us know how we did with your support request. All feedback is appreciated 
-  to help us improve our offering!
+          thanks.style.visibility = 'visible';
+            /* The issue is that visibility changes (hidden or visible) do not trigger the transitionend event in CSS. The transition property only works on animatable properties like opacity, transform, etc., but not visibility. */
 
-  1 2 3 4 5
 
-  Submit
-
-  <!-- Rating state end -->
-
-  <!-- Thank you state start -->
-
-  You selected <!-- Add rating here --> out of 5
-
-  Thank you!
-
-  We appreciate you taking the time to give a rating. If you ever need more support, 
-  don’t hesitate to get in touch!
-
-  <!-- Thank you state end -->
+             { once: true }); // `once: true` ensures the event listener runs only once
